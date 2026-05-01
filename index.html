@@ -371,9 +371,9 @@
             reset() {
                 this.x = -700;
                 this.y = Math.random() * H;
-                this.speed = 0.4 + Math.random() * 1.0;
-                this.opacity = 0.06 + Math.random() * 0.1;
-                this.fontSize = 9 + Math.random() * 4;
+                this.speed = 0.5 + Math.random() * 1.2;
+                this.opacity = 0.08 + Math.random() * 0.15;
+                this.fontSize = 10 + Math.random() * 5;
                 const types = [
                     `10.2.1.${Math.floor(Math.random()*255)} - - [${this.ts()}] "GET /product.screen?product_id=WPSS-${Math.floor(Math.random()*9)+1} HTTP/1.1" ${this.status()} ${Math.floor(Math.random()*5000)+200}`,
                     `index=main sourcetype=access_combined status=${this.status()} | stats count by clientip`,
@@ -420,7 +420,7 @@
 
         function animate() {
             // White/cream background
-            ctx.fillStyle = 'rgba(250, 248, 244, 0.12)';
+            ctx.fillStyle = 'rgba(250, 248, 244, 0.04)';
             ctx.fillRect(0, 0, W, H);
 
             time++;
