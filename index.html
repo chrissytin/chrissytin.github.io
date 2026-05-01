@@ -14,42 +14,124 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0f0f1a;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #3a3025;
+            color: #e8e8ed;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            background: #2a2218;
         }
 
-        .bg {
+        /* Animated particle canvas */
+        #particles {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
-            background: linear-gradient(160deg, #2a2218 0%, #3a2e1e 25%, #2e2618 50%, #2a2218 75%, #352a1c 100%);
-            background-size: 300% 300%;
-            
         }
 
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Subtle noise texture overlay */
-        .bg::after {
-            content: '';
-            position: absolute;
+        /* Animated gradient background */
+        .bg-gradient {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 0;
+            background: linear-gradient(135deg, #0f0f1a, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating orbs */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .bg-glow .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-glow .orb:nth-child(1) {
+            width: 600px;
+            height: 600px;
+            background: #c9a96e;
+            top: -20%;
+            left: -15%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+            opacity: 0.12;
+        }
+
+        .bg-glow .orb:nth-child(2) {
+            width: 500px;
+            height: 500px;
+            background: #0f3460;
+            bottom: -15%;
+            right: -15%;
+            animation-delay: -5s;
+            animation-duration: 22s;
+            opacity: 0.15;
+        }
+
+        .bg-glow .orb:nth-child(3) {
+            width: 350px;
+            height: 350px;
+            background: #e94560;
+            top: 40%;
+            left: 60%;
+            animation-delay: -10s;
+            animation-duration: 28s;
+            opacity: 0.06;
+        }
+
+        .bg-glow .orb:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            background: #c9a96e;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: -15s;
+            animation-duration: 30s;
+            opacity: 0.08;
+        }
+
+        .bg-glow .orb:nth-child(5) {
+            width: 200px;
+            height: 200px;
+            background: #6573c9;
+            top: 10%;
+            right: 20%;
+            animation-delay: -8s;
+            animation-duration: 18s;
+            opacity: 0.08;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(80px, -60px) scale(1.15); }
+            50% { transform: translate(-40px, 70px) scale(0.9); }
+            75% { transform: translate(50px, 30px) scale(1.1); }
         }
 
         .container {
@@ -81,13 +163,19 @@
             padding: 3px;
             margin: 0 auto 24px;
             box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2); }
+            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.35); }
         }
 
         .avatar-inner {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #2a2218;
+            background: #14141f;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -111,10 +199,15 @@
         .bio {
             font-size: 14px;
             line-height: 1.7;
-            color: #c8b89a;
+            color: #a0a0b8;
             margin-bottom: 36px;
             font-weight: 300;
             padding: 0 16px;
+        }
+
+        .bio strong {
+            color: #d0d0dd;
+            font-weight: 500;
         }
 
         .section-title {
@@ -122,7 +215,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #7a6a50;
+            color: #5a5a75;
             margin: 28px 0 14px;
             text-align: left;
             padding-left: 4px;
@@ -138,16 +231,17 @@
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            background: rgba(201, 169, 110, 0.06);
-            border: 1px solid rgba(201, 169, 110, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 8px;
-            color: #d0c8b8;
+            color: #d0d0dd;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(12px);
         }
 
         .link::before {
@@ -160,6 +254,21 @@
             background: #c9a96e;
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+
+        .link::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.06), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .link:hover::after {
+            left: 100%;
         }
 
         .link:hover {
@@ -186,17 +295,21 @@
 
         .link-title {
             font-weight: 400;
-            color: #d0c8b8;
+            color: #d0d0dd;
             font-size: 13px;
+            position: relative;
+            z-index: 1;
         }
 
-        .link:hover .link-title { color: #d8d0c0; }
+        .link:hover .link-title { color: #e8e8ed; }
 
         .link-arrow {
-            color: #6a5a40;
+            color: #4a4a60;
             font-size: 14px;
             margin-left: auto;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .link:hover .link-arrow {
@@ -215,12 +328,12 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(201, 169, 110, 0.06);
-            border: 1px solid rgba(201, 169, 110, 0.12);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #7a6a50;
+            color: #6b6b80;
             text-decoration: none;
             font-size: 18px;
             transition: all 0.3s ease;
@@ -237,28 +350,23 @@
         .footer {
             margin-top: 40px;
             font-size: 11px;
-            color: #4a3a25;
+            color: #3a3a50;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-    <div class="bg"></div>
-    <div class="bg-code">
-        <span class="code-line" style="top:5%; animation-duration:50s; animation-delay:0s;">index=main sourcetype=access_combined | stats count by status</span>
-        <span class="code-line" style="top:13%; animation-duration:55s; animation-delay:-12s;">action=purchase | stats count by status | rename count as "events"</span>
-        <span class="code-line" style="top:21%; animation-duration:48s; animation-delay:-25s;">Failed password for root from 10.2.1.44 port 22 ssh2</span>
-        <span class="code-line" style="top:29%; animation-duration:52s; animation-delay:-8s;">status>=400 | timechart count by useragent limit=5</span>
-        <span class="code-line" style="top:37%; animation-duration:58s; animation-delay:-35s;">SRC=192.168.1.5 DST=10.0.0.2 DPT=22 PROTO=TCP</span>
-        <span class="code-line" style="top:45%; animation-duration:46s; animation-delay:-18s;">sourcetype=access_combined | top limit=5 platform showperc=f</span>
-        <span class="code-line" style="top:53%; animation-duration:54s; animation-delay:-28s;">| iplocation clientip | search Country!="United States" | geostats count by City</span>
-        <span class="code-line" style="top:61%; animation-duration:50s; animation-delay:-5s;">action=purchase status>=400 | lookup product_codes.csv product_id</span>
-        <span class="code-line" style="top:69%; animation-duration:56s; animation-delay:-20s;">index=securitylogs "Failed password" | rex "from (?<src_ip>\\d+\\.\\d+\\.\\d+\\.\\d+)"</span>
-        <span class="code-line" style="top:77%; animation-duration:44s; animation-delay:-40s;">10.2.1.44 - - [2026/04/30:10:15:30] "GET /product.screen HTTP/1.1" 200 1304</span>
-        <span class="code-line" style="top:85%; animation-duration:52s; animation-delay:-15s;">| stats distinct_count(clientip) by status</span>
-        <span class="code-line" style="top:93%; animation-duration:48s; animation-delay:-32s;">| timechart span=1h count by status</span>
+    <div class="bg-gradient"></div>
+    <div class="bg-glow">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
     </div>
+
+    <canvas id="particles"></canvas>
 
     <div class="container">
 
@@ -367,5 +475,89 @@
         <div class="footer">Crafted with precision</div>
 
     </div>
+
+    <script>
+        // Animated particle system
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const PARTICLE_COUNT = 50;
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.4 + 0.1;
+                this.color = Math.random() > 0.7 ? '201, 169, 110' : '150, 160, 200';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
+
+        function drawLines() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(201, 169, 110, ${0.06 * (1 - dist / 150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            drawLines();
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
 </body>
 </html>
