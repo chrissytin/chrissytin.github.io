@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0f0f1a;
+            background: #1a1510;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,114 +24,13 @@
             overflow-x: hidden;
         }
 
-        /* Animated particle canvas */
-        #particles {
+        #bg-canvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
-        }
-
-        /* Animated gradient background */
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: linear-gradient(135deg, #0f0f1a, #1a1a2e, #16213e, #0f3460);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating orbs */
-        .bg-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .bg-glow .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .bg-glow .orb:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            background: #c9a96e;
-            top: -20%;
-            left: -15%;
-            animation-delay: 0s;
-            animation-duration: 25s;
-            opacity: 0.12;
-        }
-
-        .bg-glow .orb:nth-child(2) {
-            width: 500px;
-            height: 500px;
-            background: #0f3460;
-            bottom: -15%;
-            right: -15%;
-            animation-delay: -5s;
-            animation-duration: 22s;
-            opacity: 0.15;
-        }
-
-        .bg-glow .orb:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            background: #e94560;
-            top: 40%;
-            left: 60%;
-            animation-delay: -10s;
-            animation-duration: 28s;
-            opacity: 0.06;
-        }
-
-        .bg-glow .orb:nth-child(4) {
-            width: 300px;
-            height: 300px;
-            background: #c9a96e;
-            bottom: 20%;
-            left: 10%;
-            animation-delay: -15s;
-            animation-duration: 30s;
-            opacity: 0.08;
-        }
-
-        .bg-glow .orb:nth-child(5) {
-            width: 200px;
-            height: 200px;
-            background: #6573c9;
-            top: 10%;
-            right: 20%;
-            animation-delay: -8s;
-            animation-duration: 18s;
-            opacity: 0.08;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(80px, -60px) scale(1.15); }
-            50% { transform: translate(-40px, 70px) scale(0.9); }
-            75% { transform: translate(50px, 30px) scale(1.1); }
         }
 
         .container {
@@ -162,13 +61,13 @@
             background: linear-gradient(135deg, #c9a96e, #e8c88a, #c9a96e);
             padding: 3px;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2);
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
             animation: pulse 4s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2); }
-            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.35); }
+            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3); }
+            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.5); }
         }
 
         .avatar-inner {
@@ -199,14 +98,14 @@
         .bio {
             font-size: 14px;
             line-height: 1.7;
-            color: #a0a0b8;
+            color: #c8b89a;
             margin-bottom: 36px;
             font-weight: 300;
             padding: 0 16px;
         }
 
         .bio strong {
-            color: #d0d0dd;
+            color: #e8dcc8;
             font-weight: 500;
         }
 
@@ -215,7 +114,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #5a5a75;
+            color: #7a6a50;
             margin: 28px 0 14px;
             text-align: left;
             padding-left: 4px;
@@ -231,10 +130,10 @@
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(201, 169, 110, 0.06);
+            border: 1px solid rgba(201, 169, 110, 0.12);
             border-radius: 8px;
-            color: #d0d0dd;
+            color: #d0c8b8;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
@@ -256,25 +155,11 @@
             transition: opacity 0.3s ease;
         }
 
-        .link::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.06), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .link:hover::after {
-            left: 100%;
-        }
-
         .link:hover {
-            background: rgba(201, 169, 110, 0.08);
-            border-color: rgba(201, 169, 110, 0.25);
+            background: rgba(201, 169, 110, 0.12);
+            border-color: rgba(201, 169, 110, 0.3);
             transform: translateX(4px);
+            box-shadow: 0 4px 16px rgba(201, 169, 110, 0.1);
         }
 
         .link:hover::before { opacity: 1; }
@@ -283,7 +168,7 @@
             width: 32px;
             height: 32px;
             border-radius: 6px;
-            background: rgba(201, 169, 110, 0.1);
+            background: rgba(201, 169, 110, 0.12);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -295,21 +180,17 @@
 
         .link-title {
             font-weight: 400;
-            color: #d0d0dd;
+            color: #d0c8b8;
             font-size: 13px;
-            position: relative;
-            z-index: 1;
         }
 
-        .link:hover .link-title { color: #e8e8ed; }
+        .link:hover .link-title { color: #e8dcc8; }
 
         .link-arrow {
-            color: #4a4a60;
+            color: #6a5a40;
             font-size: 14px;
             margin-left: auto;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
         .link:hover .link-arrow {
@@ -328,45 +209,36 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(201, 169, 110, 0.06);
+            border: 1px solid rgba(201, 169, 110, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #6b6b80;
+            color: #8a7a60;
             text-decoration: none;
             font-size: 18px;
             transition: all 0.3s ease;
         }
 
         .social-icon:hover {
-            background: rgba(201, 169, 110, 0.1);
-            border-color: rgba(201, 169, 110, 0.3);
+            background: rgba(201, 169, 110, 0.12);
+            border-color: rgba(201, 169, 110, 0.35);
             color: #c9a96e;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.15);
+            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.2);
         }
 
         .footer {
             margin-top: 40px;
             font-size: 11px;
-            color: #3a3a50;
+            color: #4a3a25;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
-    <div class="bg-glow">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-    </div>
-
-    <canvas id="particles"></canvas>
+    <canvas id="bg-canvas"></canvas>
 
     <div class="container">
 
@@ -477,67 +349,119 @@
     </div>
 
     <script>
-        // Animated particle system
-        const canvas = document.getElementById('particles');
+        const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
-        const PARTICLE_COUNT = 50;
+        let W, H;
+        let logLines = [];
+        let dataNodes = [];
+        let time = 0;
 
         function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            W = canvas.width = window.innerWidth;
+            H = canvas.height = window.innerHeight;
         }
-
         window.addEventListener('resize', resize);
         resize();
 
-        class Particle {
+        // Splunk-style log lines streaming across the background
+        class LogLine {
             constructor() {
                 this.reset();
             }
 
             reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-                this.opacity = Math.random() * 0.4 + 0.1;
-                this.color = Math.random() > 0.7 ? '201, 169, 110' : '150, 160, 200';
+                this.x = -600;
+                this.y = Math.random() * H;
+                this.speed = 0.3 + Math.random() * 0.8;
+                this.opacity = 0.03 + Math.random() * 0.06;
+                this.fontSize = 9 + Math.random() * 4;
+                const types = [
+                    `10.2.1.${Math.floor(Math.random()*255)} - - [${this.ts()}] "GET /product.screen?product_id=WPSS-${Math.floor(Math.random()*9)+1} HTTP/1.1" ${this.status()} ${Math.floor(Math.random()*5000)+200}`,
+                    `index=main sourcetype=access_combined status=${this.status()} | stats count by clientip`,
+                    `Failed password for root from ${this.ip()} port ${Math.floor(Math.random()*60000)+1024} ssh2`,
+                    `SRC=${this.ip()} DST=${this.ip()} DPT=${[22,80,443,3389,8080][Math.floor(Math.random()*5)]} PROTO=TCP`,
+                    `${this.ip()} - - [${this.ts()}] "POST /cart.do?action=purchase HTTP/1.1" ${this.status()} ${Math.floor(Math.random()*3000)+500}`,
+                    `query: ${this.domain()} type=A class=IN`,
+                    `action=purchase | stats count by status | rename count as "events"`,
+                    `status=${this.status()} action=${['purchase','addtocart','view','search'][Math.floor(Math.random()*4)]} product_id=MCB-${Math.floor(Math.random()*9)+1}`,
+                    `${this.ts()} ${this.ip()} -> ${this.ip()} SYN ${Math.floor(Math.random()*1000)}`,
+                    `index=securitylogs sourcetype=linux_secure "Failed password" | rex "from (?<src_ip>\\d+\\.\\d+\\.\\d+\\.\\d+)"`,
+                ];
+                this.text = types[Math.floor(Math.random() * types.length)];
+            }
+
+            ip() { return `${Math.floor(Math.random()*223)+1}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`; }
+            status() { return [200,200,200,200,301,403,404,500,503][Math.floor(Math.random()*9)]; }
+            domain() { return `${['malware','evil','c2','exfil','update','api'][Math.floor(Math.random()*6)]}${Math.floor(Math.random()*999)}.${['xyz','top','ru','com','net'][Math.floor(Math.random()*5)]}`; }
+            ts() { const d=new Date(); return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}:${String(Math.floor(Math.random()*24)).padStart(2,'0')}:${String(Math.floor(Math.random()*60)).padStart(2,'0')}:${String(Math.floor(Math.random()*60)).padStart(2,'0')}`; }
+
+            update() {
+                this.x += this.speed;
+                if (this.x > W + 100) this.reset();
+            }
+
+            draw() {
+                ctx.font = `${this.fontSize}px 'Courier New', monospace`;
+                ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity})`;
+                ctx.fillText(this.text, this.x, this.y);
+            }
+        }
+
+        // Data flow nodes - representing data flowing through Splunk
+        class DataNode {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * W;
+                this.y = Math.random() * H;
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+                this.size = 1.5 + Math.random() * 2.5;
+                this.opacity = 0.15 + Math.random() * 0.3;
+                this.isGold = Math.random() > 0.3;
             }
 
             update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > W) this.vx *= -1;
+                if (this.y < 0 || this.y > H) this.vy *= -1;
             }
 
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+                const color = this.isGold ? `rgba(201, 169, 110, ${this.opacity})` : `rgba(232, 200, 138, ${this.opacity * 0.7})`;
+                ctx.fillStyle = color;
                 ctx.fill();
             }
         }
 
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new Particle());
+        // Initialize
+        for (let i = 0; i < 25; i++) {
+            const line = new LogLine();
+            line.x = Math.random() * W; // Start scattered
+            logLines.push(line);
         }
 
-        function drawLines() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
+        for (let i = 0; i < 80; i++) {
+            dataNodes.push(new DataNode());
+        }
 
-                    if (dist < 150) {
+        // Draw connection lines between nearby nodes
+        function drawConnections() {
+            for (let i = 0; i < dataNodes.length; i++) {
+                for (let j = i + 1; j < dataNodes.length; j++) {
+                    const dx = dataNodes[i].x - dataNodes[j].x;
+                    const dy = dataNodes[i].y - dataNodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
                         ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(201, 169, 110, ${0.06 * (1 - dist / 150)})`;
+                        ctx.moveTo(dataNodes[i].x, dataNodes[i].y);
+                        ctx.lineTo(dataNodes[j].x, dataNodes[j].y);
+                        ctx.strokeStyle = `rgba(201, 169, 110, ${0.05 * (1 - dist / 120)})`;
                         ctx.lineWidth = 0.5;
                         ctx.stroke();
                     }
@@ -545,17 +469,60 @@
             }
         }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Draw scanning line (like Splunk searching)
+        function drawScanLine() {
+            const scanY = (time * 0.5) % H;
+            const gradient = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
+            gradient.addColorStop(0, 'rgba(201, 169, 110, 0)');
+            gradient.addColorStop(0.5, 'rgba(201, 169, 110, 0.03)');
+            gradient.addColorStop(1, 'rgba(201, 169, 110, 0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, scanY - 30, W, 60);
+        }
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
+        // Subtle vignette
+        function drawVignette() {
+            const gradient = ctx.createRadialGradient(W/2, H/2, H*0.3, W/2, H/2, H*0.9);
+            gradient.addColorStop(0, 'rgba(26, 21, 16, 0)');
+            gradient.addColorStop(1, 'rgba(10, 8, 5, 0.6)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, W, H);
+        }
+
+        function animate() {
+            // Dark warm background
+            ctx.fillStyle = 'rgba(26, 21, 16, 0.15)';
+            ctx.fillRect(0, 0, W, H);
+
+            time++;
+
+            // Draw log lines
+            logLines.forEach(l => {
+                l.update();
+                l.draw();
             });
 
-            drawLines();
+            // Draw connections
+            drawConnections();
+
+            // Draw data nodes
+            dataNodes.forEach(n => {
+                n.update();
+                n.draw();
+            });
+
+            // Scan line
+            drawScanLine();
+
+            // Vignette
+            drawVignette();
+
             requestAnimationFrame(animate);
         }
+
+        // Initial full clear
+        ctx.fillStyle = '#1a1510';
+        ctx.fillRect(0, 0, W, H);
 
         animate();
     </script>
