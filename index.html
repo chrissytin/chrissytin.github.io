@@ -14,12 +14,12 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #1a1510;
+            background: #faf8f4;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #e8e8ed;
+            color: #3a3025;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
@@ -61,20 +61,20 @@
             background: linear-gradient(135deg, #c9a96e, #e8c88a, #c9a96e);
             padding: 3px;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3);
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.25);
             animation: pulse 4s ease-in-out infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.3); }
-            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.5); }
+            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.25); }
+            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.4); }
         }
 
         .avatar-inner {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #14141f;
+            background: #f0ece4;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -98,14 +98,14 @@
         .bio {
             font-size: 14px;
             line-height: 1.7;
-            color: #c8b89a;
+            color: #6b5d4a;
             margin-bottom: 36px;
             font-weight: 300;
             padding: 0 16px;
         }
 
         .bio strong {
-            color: #e8dcc8;
+            color: #3a3025;
             font-weight: 500;
         }
 
@@ -114,7 +114,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #7a6a50;
+            color: #8a7a60;
             margin: 28px 0 14px;
             text-align: left;
             padding-left: 4px;
@@ -130,10 +130,10 @@
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            background: rgba(201, 169, 110, 0.06);
-            border: 1px solid rgba(201, 169, 110, 0.12);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(201, 169, 110, 0.15);
             border-radius: 8px;
-            color: #d0c8b8;
+            color: #5a4a35;
             text-decoration: none;
             font-size: 14px;
             font-weight: 400;
@@ -156,10 +156,10 @@
         }
 
         .link:hover {
-            background: rgba(201, 169, 110, 0.12);
-            border-color: rgba(201, 169, 110, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            border-color: rgba(201, 169, 110, 0.35);
             transform: translateX(4px);
-            box-shadow: 0 4px 16px rgba(201, 169, 110, 0.1);
+            box-shadow: 0 4px 16px rgba(201, 169, 110, 0.12);
         }
 
         .link:hover::before { opacity: 1; }
@@ -175,26 +175,26 @@
             font-size: 15px;
             margin-right: 14px;
             flex-shrink: 0;
-            color: #c9a96e;
+            color: #b8944a;
         }
 
         .link-title {
             font-weight: 400;
-            color: #d0c8b8;
+            color: #5a4a35;
             font-size: 13px;
         }
 
-        .link:hover .link-title { color: #e8dcc8; }
+        .link:hover .link-title { color: #2a2218; }
 
         .link-arrow {
-            color: #6a5a40;
+            color: #c9a86e;
             font-size: 14px;
             margin-left: auto;
             transition: all 0.3s ease;
         }
 
         .link:hover .link-arrow {
-            color: #c9a96e;
+            color: #b8944a;
             transform: translateX(3px);
         }
 
@@ -209,8 +209,8 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(201, 169, 110, 0.06);
-            border: 1px solid rgba(201, 169, 110, 0.15);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(201, 169, 110, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -221,17 +221,17 @@
         }
 
         .social-icon:hover {
-            background: rgba(201, 169, 110, 0.12);
-            border-color: rgba(201, 169, 110, 0.35);
-            color: #c9a96e;
+            background: rgba(201, 169, 110, 0.1);
+            border-color: rgba(201, 169, 110, 0.4);
+            color: #b8944a;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.2);
+            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.15);
         }
 
         .footer {
             margin-top: 40px;
             font-size: 11px;
-            color: #4a3a25;
+            color: #b8a88a;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
@@ -353,7 +353,6 @@
         const ctx = canvas.getContext('2d');
         let W, H;
         let logLines = [];
-        let dataNodes = [];
         let time = 0;
 
         function resize() {
@@ -363,17 +362,17 @@
         window.addEventListener('resize', resize);
         resize();
 
-        // Splunk-style log lines streaming across the background
+        // Splunk-style log lines flying across the screen
         class LogLine {
             constructor() {
                 this.reset();
             }
 
             reset() {
-                this.x = -600;
+                this.x = -700;
                 this.y = Math.random() * H;
-                this.speed = 0.3 + Math.random() * 0.8;
-                this.opacity = 0.03 + Math.random() * 0.06;
+                this.speed = 0.4 + Math.random() * 1.0;
+                this.opacity = 0.06 + Math.random() * 0.1;
                 this.fontSize = 9 + Math.random() * 4;
                 const types = [
                     `10.2.1.${Math.floor(Math.random()*255)} - - [${this.ts()}] "GET /product.screen?product_id=WPSS-${Math.floor(Math.random()*9)+1} HTTP/1.1" ${this.status()} ${Math.floor(Math.random()*5000)+200}`,
@@ -386,6 +385,11 @@
                     `status=${this.status()} action=${['purchase','addtocart','view','search'][Math.floor(Math.random()*4)]} product_id=MCB-${Math.floor(Math.random()*9)+1}`,
                     `${this.ts()} ${this.ip()} -> ${this.ip()} SYN ${Math.floor(Math.random()*1000)}`,
                     `index=securitylogs sourcetype=linux_secure "Failed password" | rex "from (?<src_ip>\\d+\\.\\d+\\.\\d+\\.\\d+)"`,
+                    `sourcetype=access_combined | top limit=5 platform showperc=f`,
+                    `| timechart count by status | where status>=400`,
+                    `action=purchase status>=400 | lookup product_codes.csv product_id | timechart sum(product_price)`,
+                    `SRC=${this.ip()} DPT=${[22,80,443,3389][Math.floor(Math.random()*4)]} BLOCK=YES`,
+                    `${this.ip()} - - [${this.ts()}] "GET /admin HTTP/1.1" 403 0`,
                 ];
                 this.text = types[Math.floor(Math.random() * types.length)];
             }
@@ -407,91 +411,16 @@
             }
         }
 
-        // Data flow nodes - representing data flowing through Splunk
-        class DataNode {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * W;
-                this.y = Math.random() * H;
-                this.vx = (Math.random() - 0.5) * 1.2;
-                this.vy = (Math.random() - 0.5) * 1.2;
-                this.size = 1.5 + Math.random() * 2.5;
-                this.opacity = 0.15 + Math.random() * 0.3;
-                this.isGold = Math.random() > 0.3;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > W) this.vx *= -1;
-                if (this.y < 0 || this.y > H) this.vy *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                const color = this.isGold ? `rgba(201, 169, 110, ${this.opacity})` : `rgba(232, 200, 138, ${this.opacity * 0.7})`;
-                ctx.fillStyle = color;
-                ctx.fill();
-            }
-        }
-
-        // Initialize
-        for (let i = 0; i < 25; i++) {
+        // Initialize log lines scattered across screen
+        for (let i = 0; i < 30; i++) {
             const line = new LogLine();
-            line.x = Math.random() * W; // Start scattered
+            line.x = Math.random() * (W + 700) - 700;
             logLines.push(line);
         }
 
-        for (let i = 0; i < 80; i++) {
-            dataNodes.push(new DataNode());
-        }
-
-        // Draw connection lines between nearby nodes
-        function drawConnections() {
-            for (let i = 0; i < dataNodes.length; i++) {
-                for (let j = i + 1; j < dataNodes.length; j++) {
-                    const dx = dataNodes[i].x - dataNodes[j].x;
-                    const dy = dataNodes[i].y - dataNodes[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        ctx.moveTo(dataNodes[i].x, dataNodes[i].y);
-                        ctx.lineTo(dataNodes[j].x, dataNodes[j].y);
-                        ctx.strokeStyle = `rgba(201, 169, 110, ${0.05 * (1 - dist / 120)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        // Draw scanning line (like Splunk searching)
-        function drawScanLine() {
-            const scanY = (time * 0.5) % H;
-            const gradient = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
-            gradient.addColorStop(0, 'rgba(201, 169, 110, 0)');
-            gradient.addColorStop(0.5, 'rgba(201, 169, 110, 0.03)');
-            gradient.addColorStop(1, 'rgba(201, 169, 110, 0)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, scanY - 30, W, 60);
-        }
-
-        // Subtle vignette
-        function drawVignette() {
-            const gradient = ctx.createRadialGradient(W/2, H/2, H*0.3, W/2, H/2, H*0.9);
-            gradient.addColorStop(0, 'rgba(26, 21, 16, 0)');
-            gradient.addColorStop(1, 'rgba(10, 8, 5, 0.6)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, W, H);
-        }
-
         function animate() {
-            // Dark warm background
-            ctx.fillStyle = 'rgba(26, 21, 16, 0.15)';
+            // White/cream background
+            ctx.fillStyle = 'rgba(250, 248, 244, 0.12)';
             ctx.fillRect(0, 0, W, H);
 
             time++;
@@ -502,26 +431,11 @@
                 l.draw();
             });
 
-            // Draw connections
-            drawConnections();
-
-            // Draw data nodes
-            dataNodes.forEach(n => {
-                n.update();
-                n.draw();
-            });
-
-            // Scan line
-            drawScanLine();
-
-            // Vignette
-            drawVignette();
-
             requestAnimationFrame(animate);
         }
 
         // Initial full clear
-        ctx.fillStyle = '#1a1510';
+        ctx.fillStyle = '#faf8f4';
         ctx.fillRect(0, 0, W, H);
 
         animate();
