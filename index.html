@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christina | Security & Data</title>
+    <meta property="og:title" content="Christina's Links" />
+    <meta property="og:description" content="Security analyst turning data into actionable intelligence" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -32,7 +31,6 @@
             position: relative;
         }
 
-        /* Subtle top accent line */
         .container::before {
             content: '';
             position: absolute;
@@ -46,12 +44,12 @@
         }
 
         .avatar-ring {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             background: linear-gradient(135deg, #c9a96e, #e8c88a, #c9a96e);
             padding: 3px;
-            margin: 0 auto 28px;
+            margin: 0 auto 24px;
             box-shadow: 0 8px 32px rgba(201, 169, 110, 0.15);
         }
 
@@ -60,15 +58,22 @@
             height: 100%;
             border-radius: 50%;
             background: #14141f;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 44px;
+        }
+
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
         .name {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             letter-spacing: -0.5px;
             margin-bottom: 6px;
@@ -80,21 +85,21 @@
             color: #6b6b80;
             font-weight: 400;
             letter-spacing: 0.5px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .divider {
             width: 40px;
             height: 1px;
             background: linear-gradient(90deg, transparent, #c9a96e, transparent);
-            margin: 0 auto 24px;
+            margin: 0 auto 20px;
         }
 
         .bio {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
             color: #9898ad;
-            margin-bottom: 36px;
+            margin-bottom: 32px;
             font-weight: 300;
             padding: 0 16px;
         }
@@ -109,31 +114,42 @@
             justify-content: center;
             gap: 8px;
             flex-wrap: wrap;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
 
         .credential {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 500;
             letter-spacing: 0.8px;
             text-transform: uppercase;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border: 1px solid rgba(201, 169, 110, 0.25);
             border-radius: 4px;
             color: #c9a96e;
             background: rgba(201, 169, 110, 0.05);
         }
 
+        .section-title {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #4a4a60;
+            margin: 28px 0 14px;
+            text-align: left;
+            padding-left: 4px;
+        }
+
         .links {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .link {
             display: flex;
             align-items: center;
-            padding: 18px 24px;
+            padding: 16px 20px;
             background: rgba(255, 255, 255, 0.025);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 8px;
@@ -164,44 +180,34 @@
             transform: translateX(4px);
         }
 
-        .link:hover::before {
-            opacity: 1;
-        }
+        .link:hover::before { opacity: 1; }
 
         .link-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 6px;
             background: rgba(201, 169, 110, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            margin-right: 16px;
+            font-size: 15px;
+            margin-right: 14px;
             flex-shrink: 0;
-        }
-
-        .link-content {
-            flex: 1;
-            text-align: left;
+            color: #c9a96e;
         }
 
         .link-title {
-            font-weight: 500;
-            color: #e8e8ed;
-            font-size: 14px;
-            margin-bottom: 2px;
+            font-weight: 400;
+            color: #d0d0dd;
+            font-size: 13px;
         }
 
-        .link-desc {
-            font-size: 12px;
-            color: #6b6b80;
-            font-weight: 300;
-        }
+        .link:hover .link-title { color: #e8e8ed; }
 
         .link-arrow {
             color: #4a4a60;
-            font-size: 16px;
+            font-size: 14px;
+            margin-left: auto;
             transition: all 0.3s ease;
         }
 
@@ -210,8 +216,37 @@
             transform: translateX(3px);
         }
 
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .social-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b6b80;
+            text-decoration: none;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: rgba(201, 169, 110, 0.3);
+            color: #c9a96e;
+            transform: translateY(-2px);
+        }
+
         .footer {
-            margin-top: 48px;
+            margin-top: 40px;
             font-size: 11px;
             color: #3a3a50;
             letter-spacing: 1px;
@@ -223,7 +258,9 @@
     <div class="container">
 
         <div class="avatar-ring">
-            <div class="avatar-inner">🛡️</div>
+            <div class="avatar-inner">
+                <img src="profile.jpg" alt="Christina">
+            </div>
         </div>
 
         <div class="name">Christina</div>
@@ -241,44 +278,100 @@
             <span class="credential">Home Lab Architect</span>
         </div>
 
+        <div class="section-title">Resources</div>
         <div class="links">
 
-            <a href="https://github.com/chrissytin/splunk-lab" class="link">
-                <div class="link-icon">🧪</div>
-                <div class="link-content">
-                    <div class="link-title">Splunk Home Lab</div>
-                    <div class="link-desc">Docker-based Splunk Enterprise with Buttercup Games data</div>
-                </div>
+            <a href="https://cisco.navattic.com/splunk_partners?g=cm8y08u8q000e03kz6d0wc082&s=0" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-handshake"></i></div>
+                <div class="link-title">Splunk Partner Portal Resources</div>
                 <span class="link-arrow">→</span>
             </a>
 
-            <a href="https://github.com/chrissytin" class="link">
-                <div class="link-icon">⬛</div>
-                <div class="link-content">
-                    <div class="link-title">GitHub</div>
-                    <div class="link-desc">Projects, labs, and open source contributions</div>
-                </div>
+            <a href="https://www.brighttalk.com/series/8000" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-play-circle"></i></div>
+                <div class="link-title">Splunk Go On-Demand</div>
                 <span class="link-arrow">→</span>
             </a>
 
-            <a href="https://www.linkedin.com/in/" class="link">
-                <div class="link-icon">💼</div>
-                <div class="link-content">
-                    <div class="link-title">LinkedIn</div>
-                    <div class="link-desc">Professional network and experience</div>
-                </div>
+            <a href="https://splunkgames.com/" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-gamepad"></i></div>
+                <div class="link-title">Splunk Games</div>
                 <span class="link-arrow">→</span>
             </a>
 
-            <a href="https://splunk.com" class="link">
-                <div class="link-icon">📊</div>
-                <div class="link-content">
-                    <div class="link-title">Splunk</div>
-                    <div class="link-desc">The platform behind the searches</div>
-                </div>
+            <a href="https://discover.splunk.com/Partner-Newsletter-Subscription.html" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="link-title">Subscribe to Splunk Partner Pulse</div>
                 <span class="link-arrow">→</span>
             </a>
 
+            <a href="https://dev.splunk.com/enterprise/dev_license" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-key"></i></div>
+                <div class="link-title">Request Splunk Enterprise Developer License</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+        </div>
+
+        <div class="section-title">Enablement</div>
+        <div class="links">
+
+            <a href="https://cisco.webex.com/webappng/sites/cisco/webinar/webinarSeries/register/1770d864b35d4cda95fbdc011e36c955" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="link-title">Splunk Partner Enablement Calls (.spec)</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://cisco.webex.com/webappng/sites/cisco/webinar/webinarSeries/register/1eebea36fbb0496a9ba12c7d52c1b956" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-video"></i></div>
+                <div class="link-title">Partner Enablement Webinars</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://usergroups.splunk.com/chapters" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-users"></i></div>
+                <div class="link-title">ANZ User Group Chapters</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://discover.splunk.com/workshop-wednesdays-apac.html" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <div class="link-title">Workshop Wednesdays (APAC)</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+        </div>
+
+        <div class="section-title">Community</div>
+        <div class="links">
+
+            <a href="https://community.splunk.com/t5/Community-Blog/bg-p/Community-Blog" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-blog"></i></div>
+                <div class="link-title">Splunk Community Blog</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://lantern.splunk.com/" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                <div class="link-title">Splunk Lantern: Expert Insights</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://github.com/chrissytin/splunk-lab" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-flask"></i></div>
+                <div class="link-title">My Splunk Home Lab</div>
+                <span class="link-arrow">→</span>
+            </a>
+
+        </div>
+
+        <div class="social-row">
+            <a href="https://github.com/chrissytin" target="_blank" class="social-icon" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
         </div>
 
         <div class="footer">Crafted with precision</div>
