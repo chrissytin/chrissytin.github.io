@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Christina | Security & Data</title>
     <meta property="og:title" content="Christina's Links" />
-    <meta property="og:description" content="Turning data into actionable insights as a Splunk Partner SE" />
+    <meta property="og:description" content="Security analyst turning data into actionable intelligence" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #0f0f1a;
+            background: #0a0a0f;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -24,37 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Animated particle canvas */
-        #particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        .bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            background: linear-gradient(135deg, #6b3fa0, #c9a96e, #8b5fbf, #e8c88a, #6b3fa0);
-            background-size: 400% 400%;
-            animation: gradientShift 12s ease infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            25% { background-position: 50% 100%; }
-            50% { background-position: 100% 50%; }
-            75% { background-position: 50% 0%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating orbs */
+        /* Animated background */
         .bg-glow {
             position: fixed;
             top: 0;
@@ -62,77 +32,80 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 0;
             overflow: hidden;
         }
 
         .bg-glow .orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(100px);
+            filter: blur(80px);
+            opacity: 0.15;
             animation: float 20s ease-in-out infinite;
         }
 
         .bg-glow .orb:nth-child(1) {
-            width: 600px;
-            height: 600px;
+            width: 500px;
+            height: 500px;
             background: #c9a96e;
-            top: -20%;
-            left: -15%;
+            top: -10%;
+            left: -10%;
             animation-delay: 0s;
             animation-duration: 25s;
-            opacity: 0.12;
         }
 
         .bg-glow .orb:nth-child(2) {
-            width: 500px;
-            height: 500px;
+            width: 400px;
+            height: 400px;
             background: #0f3460;
-            bottom: -15%;
-            right: -15%;
+            bottom: -10%;
+            right: -10%;
             animation-delay: -5s;
             animation-duration: 22s;
-            opacity: 0.15;
         }
 
         .bg-glow .orb:nth-child(3) {
-            width: 350px;
-            height: 350px;
+            width: 300px;
+            height: 300px;
             background: #e94560;
-            top: 40%;
+            top: 50%;
             left: 60%;
             animation-delay: -10s;
             animation-duration: 28s;
-            opacity: 0.06;
+            opacity: 0.08;
         }
 
         .bg-glow .orb:nth-child(4) {
-            width: 300px;
-            height: 300px;
+            width: 250px;
+            height: 250px;
             background: #c9a96e;
-            bottom: 20%;
-            left: 10%;
+            bottom: 30%;
+            left: 20%;
             animation-delay: -15s;
             animation-duration: 30s;
-            opacity: 0.08;
-        }
-
-        .bg-glow .orb:nth-child(5) {
-            width: 200px;
-            height: 200px;
-            background: #6573c9;
-            top: 10%;
-            right: 20%;
-            animation-delay: -8s;
-            animation-duration: 18s;
-            opacity: 0.08;
+            opacity: 0.06;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(80px, -60px) scale(1.15); }
-            50% { transform: translate(-40px, 70px) scale(0.9); }
-            75% { transform: translate(50px, 30px) scale(1.1); }
+            25% { transform: translate(60px, -40px) scale(1.1); }
+            50% { transform: translate(-30px, 50px) scale(0.95); }
+            75% { transform: translate(40px, 20px) scale(1.05); }
+        }
+
+        /* Subtle grid overlay */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(201, 169, 110, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(201, 169, 110, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
 
         .container {
@@ -141,7 +114,7 @@
             padding: 60px 28px;
             text-align: center;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
         .container::before {
@@ -163,13 +136,7 @@
             background: linear-gradient(135deg, #c9a96e, #e8c88a, #c9a96e);
             padding: 3px;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { box-shadow: 0 8px 32px rgba(201, 169, 110, 0.2); }
-            50% { box-shadow: 0 8px 48px rgba(201, 169, 110, 0.35); }
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.15);
         }
 
         .avatar-inner {
@@ -190,6 +157,23 @@
             border-radius: 50%;
         }
 
+        .name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .handle {
+            font-size: 14px;
+            color: #6b6b80;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
         .divider {
             width: 40px;
             height: 1px;
@@ -200,15 +184,35 @@
         .bio {
             font-size: 14px;
             line-height: 1.7;
-            color: #a0a0b8;
-            margin-bottom: 36px;
+            color: #9898ad;
+            margin-bottom: 32px;
             font-weight: 300;
             padding: 0 16px;
         }
 
         .bio strong {
-            color: #d0d0dd;
+            color: #d4d4e0;
             font-weight: 500;
+        }
+
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 36px;
+        }
+
+        .credential {
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            border-radius: 4px;
+            color: #c9a96e;
+            background: rgba(201, 169, 110, 0.05);
         }
 
         .section-title {
@@ -216,7 +220,7 @@
             font-weight: 600;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #5a5a75;
+            color: #4a4a60;
             margin: 28px 0 14px;
             text-align: left;
             padding-left: 4px;
@@ -232,8 +236,8 @@
             display: flex;
             align-items: center;
             padding: 16px 20px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 8px;
             color: #d0d0dd;
             text-decoration: none;
@@ -242,7 +246,6 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(12px);
         }
 
         .link::before {
@@ -257,24 +260,9 @@
             transition: opacity 0.3s ease;
         }
 
-        .link::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.06), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .link:hover::after {
-            left: 100%;
-        }
-
         .link:hover {
-            background: rgba(201, 169, 110, 0.08);
-            border-color: rgba(201, 169, 110, 0.25);
+            background: rgba(201, 169, 110, 0.06);
+            border-color: rgba(201, 169, 110, 0.2);
             transform: translateX(4px);
         }
 
@@ -284,7 +272,7 @@
             width: 32px;
             height: 32px;
             border-radius: 6px;
-            background: rgba(201, 169, 110, 0.1);
+            background: rgba(201, 169, 110, 0.08);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -298,8 +286,6 @@
             font-weight: 400;
             color: #d0d0dd;
             font-size: 13px;
-            position: relative;
-            z-index: 1;
         }
 
         .link:hover .link-title { color: #e8e8ed; }
@@ -309,8 +295,6 @@
             font-size: 14px;
             margin-left: auto;
             transition: all 0.3s ease;
-            position: relative;
-            z-index: 1;
         }
 
         .link:hover .link-arrow {
@@ -345,7 +329,6 @@
             border-color: rgba(201, 169, 110, 0.3);
             color: #c9a96e;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(201, 169, 110, 0.15);
         }
 
         .footer {
@@ -358,29 +341,35 @@
     </style>
 </head>
 <body>
-    <div class="bg-gradient"></div>
     <div class="bg-glow">
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
         <div class="orb"></div>
-        <div class="orb"></div>
     </div>
-
-    <canvas id="particles"></canvas>
+    <div class="bg-grid"></div>
 
     <div class="container">
 
         <div class="avatar-ring">
             <div class="avatar-inner">
-                <img src="profile.jpg" alt="Profile">
+                <img src="profile.jpg" alt="Christina">
             </div>
         </div>
+
+        <div class="name">Christina</div>
+        <div class="handle">@chrissytin</div>
 
         <div class="divider"></div>
 
         <div class="bio">
-            Turning data into actionable insights as a Splunk Partner SE. Let's connect and explore the power of data!
+            Security analyst building the bridge between <strong>raw data</strong> and <strong>actionable intelligence</strong>. Specialising in Splunk, security operations, and turning complexity into clarity.
+        </div>
+
+        <div class="credentials">
+            <span class="credential">Splunk ES Premier</span>
+            <span class="credential">Security Operations</span>
+            <span class="credential">Home Lab Architect</span>
         </div>
 
         <div class="section-title">Resources</div>
@@ -462,6 +451,12 @@
                 <span class="link-arrow">→</span>
             </a>
 
+            <a href="https://github.com/chrissytin/splunk-lab" target="_blank" class="link">
+                <div class="link-icon"><i class="fa-solid fa-flask"></i></div>
+                <div class="link-title">My Splunk Home Lab</div>
+                <span class="link-arrow">→</span>
+            </a>
+
         </div>
 
         <div class="social-row">
@@ -476,147 +471,5 @@
         <div class="footer">Crafted with precision</div>
 
     </div>
-
-    <script>
-        // Animated particle system
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        const PARTICLE_COUNT = 50;
-        const LOG_COUNT = 15;
-
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-                this.opacity = Math.random() * 0.4 + 0.1;
-                this.color = Math.random() > 0.7 ? '201, 169, 110' : '150, 160, 200';
-            }
-
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-
-                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
-
-        // Splunk log lines
-        let logLines = [];
-
-        class LogLine {
-            constructor() {
-                this.reset();
-            }
-
-            reset() {
-                this.x = -800;
-                this.y = 30 + Math.random() * (canvas.height - 60);
-                this.speed = 0.3 + Math.random() * 0.6;
-                this.opacity = 0.06 + Math.random() * 0.08;
-                this.fontSize = 10 + Math.random() * 3;
-                const types = [
-                    `index=main sourcetype=access_combined | stats count by status`,
-                    `action=purchase | stats count by status | rename count as "events"`,
-                    `Failed password for root from ${this.ip()} port ${Math.floor(Math.random()*60000)+1024} ssh2`,
-                    `status>=400 | timechart count by useragent limit=5`,
-                    `SRC=${this.ip()} DST=${this.ip()} DPT=${[22,80,443,3389][Math.floor(Math.random()*4)]} PROTO=TCP`,
-                    `sourcetype=access_combined | top limit=5 platform showperc=f`,
-                    `| iplocation clientip | search Country!="United States" | geostats count by City`,
-                    `action=purchase status>=400 | lookup product_codes.csv product_id`,
-                    `${this.ip()} - - [${this.ts()}] "GET /product.screen HTTP/1.1" ${[200,403,500,503][Math.floor(Math.random()*4)]} 1304`,
-                    `| timechart span=1h count by status`,
-                    `| stats distinct_count(clientip) by status`,
-                ];
-                this.text = types[Math.floor(Math.random() * types.length)];
-            }
-
-            ip() { return `${Math.floor(Math.random()*223)+1}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`; }
-            ts() { const d=new Date(); return `${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}:${String(Math.floor(Math.random()*24)).padStart(2,'0')}:${String(Math.floor(Math.random()*60)).padStart(2,'0')}`; }
-
-            update() {
-                this.x += this.speed;
-                if (this.x > canvas.width + 100) this.reset();
-            }
-
-            draw() {
-                ctx.font = `${this.fontSize}px 'Courier New', monospace`;
-                ctx.fillStyle = `rgba(201, 169, 110, ${this.opacity})`;
-                ctx.fillText(this.text, this.x, this.y);
-            }
-        }
-
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new Particle());
-        }
-
-        for (let i = 0; i < LOG_COUNT; i++) {
-            const line = new LogLine();
-            line.x = Math.random() * canvas.width;
-            logLines.push(line);
-        }
-
-        function drawLines() {
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    if (dist < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(201, 169, 110, ${0.06 * (1 - dist / 150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.stroke();
-                    }
-                }
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Draw log lines first (behind everything)
-            logLines.forEach(l => {
-                l.update();
-                l.draw();
-            });
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
-            drawLines();
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-    </script>
 </body>
 </html>
