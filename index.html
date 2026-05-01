@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christina | Security & Data</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e8e8ed;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 520px;
+            width: 100%;
+            padding: 60px 28px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Subtle top accent line */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #c9a96e, #e8c88a);
+            border-radius: 2px;
+        }
+
+        .avatar-ring {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c9a96e, #e8c88a, #c9a96e);
+            padding: 3px;
+            margin: 0 auto 28px;
+            box-shadow: 0 8px 32px rgba(201, 169, 110, 0.15);
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #14141f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 44px;
+        }
+
+        .name {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+            color: #ffffff;
+        }
+
+        .handle {
+            font-size: 14px;
+            color: #6b6b80;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c9a96e, transparent);
+            margin: 0 auto 24px;
+        }
+
+        .bio {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #9898ad;
+            margin-bottom: 36px;
+            font-weight: 300;
+            padding: 0 16px;
+        }
+
+        .bio strong {
+            color: #d4d4e0;
+            font-weight: 500;
+        }
+
+        .credentials {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .credential {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border: 1px solid rgba(201, 169, 110, 0.25);
+            border-radius: 4px;
+            color: #c9a96e;
+            background: rgba(201, 169, 110, 0.05);
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .link {
+            display: flex;
+            align-items: center;
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            color: #d0d0dd;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #c9a96e;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .link:hover {
+            background: rgba(201, 169, 110, 0.06);
+            border-color: rgba(201, 169, 110, 0.2);
+            transform: translateX(4px);
+        }
+
+        .link:hover::before {
+            opacity: 1;
+        }
+
+        .link-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background: rgba(201, 169, 110, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+
+        .link-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .link-title {
+            font-weight: 500;
+            color: #e8e8ed;
+            font-size: 14px;
+            margin-bottom: 2px;
+        }
+
+        .link-desc {
+            font-size: 12px;
+            color: #6b6b80;
+            font-weight: 300;
+        }
+
+        .link-arrow {
+            color: #4a4a60;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .link:hover .link-arrow {
+            color: #c9a96e;
+            transform: translateX(3px);
+        }
+
+        .footer {
+            margin-top: 48px;
+            font-size: 11px;
+            color: #3a3a50;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="avatar-ring">
+            <div class="avatar-inner">🛡️</div>
+        </div>
+
+        <div class="name">Christina</div>
+        <div class="handle">@chrissytin</div>
+
+        <div class="divider"></div>
+
+        <div class="bio">
+            Security analyst building the bridge between <strong>raw data</strong> and <strong>actionable intelligence</strong>. Specialising in Splunk, security operations, and turning complexity into clarity.
+        </div>
+
+        <div class="credentials">
+            <span class="credential">Splunk ES Premier</span>
+            <span class="credential">Security Operations</span>
+            <span class="credential">Home Lab Architect</span>
+        </div>
+
+        <div class="links">
+
+            <a href="https://github.com/chrissytin/splunk-lab" class="link">
+                <div class="link-icon">🧪</div>
+                <div class="link-content">
+                    <div class="link-title">Splunk Home Lab</div>
+                    <div class="link-desc">Docker-based Splunk Enterprise with Buttercup Games data</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://github.com/chrissytin" class="link">
+                <div class="link-icon">⬛</div>
+                <div class="link-content">
+                    <div class="link-title">GitHub</div>
+                    <div class="link-desc">Projects, labs, and open source contributions</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/" class="link">
+                <div class="link-icon">💼</div>
+                <div class="link-content">
+                    <div class="link-title">LinkedIn</div>
+                    <div class="link-desc">Professional network and experience</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://splunk.com" class="link">
+                <div class="link-icon">📊</div>
+                <div class="link-content">
+                    <div class="link-title">Splunk</div>
+                    <div class="link-desc">The platform behind the searches</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+        </div>
+
+        <div class="footer">Crafted with precision</div>
+
+    </div>
+</body>
+</html>
